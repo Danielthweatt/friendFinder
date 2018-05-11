@@ -2,7 +2,6 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
-const path = require("path");
 
 // Express App Setup
 
@@ -16,8 +15,8 @@ app.use(bodyParser.json());
 
 // Routing
 
-require(".app/routing/apiRoutes")(app);
-require(".app/routing/htmlRoutes")(app);
+require("./app/routing/apiRoutes.js")(app);
+require("./app/routing/htmlRoutes.js")(app);
 
 // Start Server
 
