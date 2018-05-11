@@ -5,8 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Friend Finder</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" 
+    integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 </head>
-<body>
-    <h1>Welcome!</h1>
+<body class="container">
+    <div class="jumbotron">
+        <h1><i class="fas fa-child"></i> Friend Finder</h1>
+        <hr>
+        <h2>Answer a few basic questions.</h2>
+        <h2>Then find the friend with the greatest compatibility!</h2>
+        <br>
+        <a href="/survey"><button class="btn btn-lg btn-primary"><i class="fas fa-clipboard-list"></i> Go To Survey</button></a>
+    </div>
+    <footer>
+        <p><a href="/api/friends">API Friends List</a> | <a href="#">GitHub Repo</a></p>
+    </footer>
 </body>
 </html>
