@@ -15,8 +15,8 @@ app.use(bodyParser.json());
 
 // Routing
 
-require("./app/routing/apiRoutes.js")(app);
-require("./app/routing/htmlRoutes.js")(app);
+require("./app/routing/apiRoutes")(app);
+require("./app/routing/htmlRoutes")(app);
 
 // Start Server
 
