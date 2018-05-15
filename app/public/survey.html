@@ -16,7 +16,7 @@
     <h2>Survey Questions</h2>
     <hr>
     <h3>About You</h3>
-    <form role="form">
+    <form>
         <div class="form-group">
             <label for="name">Name (Required)</label>
             <input type="text" class="form-control" id="name">
@@ -25,7 +25,117 @@
             <label for="photo-link">Link to Photo Image (Required)</label>
             <input type="text" class="form-control" id="photo-link">
         </div>
-        <hr>      
+        <hr>
+        <h3>Question 1</h3>
+        <div class="form-group">
+            <label for="q1">You like to be around big groups of people:</label>
+            <select class="form-control" id="q1">
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+            </select>
+        </div>
+        <h3>Question 2</h3>
+        <div class="form-group">
+            <label for="q2">You like to be active:</label>
+            <select class="form-control" id="q2">
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+            </select>
+        </div>
+        <h3>Question 3</h3>
+        <div class="form-group">
+            <label for="q3">You generally go with the flow:</label>
+            <select class="form-control" id="q3">
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+            </select>
+        </div>
+        <h3>Question 4</h3>
+        <div class="form-group">
+            <label for="q4">You like to plan ahead:</label>
+            <select class="form-control" id="q4">
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+            </select>
+        </div>
+        <h3>Question 5</h3>
+        <div class="form-group">
+            <label for="q5">You like to talk through deep ideas:</label>
+            <select class="form-control" id="q5">
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+            </select>
+        </div>
+        <h3>Question 6</h3>
+        <div class="form-group">
+            <label for="q6">You are very emotional:</label>
+            <select class="form-control" id="q6">
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+            </select>
+        </div>
+        <h3>Question 7</h3>
+        <div class="form-group">
+            <label for="q7">You like doing things in cold weather:</label>
+            <select class="form-control" id="q7">
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+            </select>
+        </div>
+        <h3>Question 8</h3>
+        <div class="form-group">
+            <label for="q8">You like doing things in warm weather:</label>
+            <select class="form-control" id="q8">
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+            </select>
+        </div>
+        <h3>Question 9</h3>
+        <div class="form-group">
+            <label for="q9">Your idea of a good time involves being indoors:</label>
+            <select class="form-control" id="q9">
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+            </select>
+        </div>
+        <h3>Question 10</h3>
+        <div class="form-group">
+            <label for="q10">You like trying new things:</label>
+            <select class="form-control" id="q10">
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+            </select>
+        </div>
         <button type="submit" class="btn btn-primary submit"><i class="far fa-check-square"></i> Submit</button>
     </form>
     <hr>
@@ -33,4 +143,27 @@
         <p><a href="/api/friends">API Friends List</a> | <a href="#">GitHub Repo</a></p>
     </footer>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(".submit").on("click", function(event){
+        event.preventDefault();
+        const scores = [];
+        for (let i = 1; i < 11; i++) {
+            scores.push($(`#q${i}`).val());
+        }
+        const newFriend = {
+            name: $("#name").val().trim(),
+            photo: $("#photo-link").val().trim(),
+            scores: scores
+        };
+        $.post("/api/friends", newFriend, function(data){
+            console.log(data);
+        });
+        $("#name").val("");
+        $("#photo-link").val("");
+        for (let i = 1; i < 11; i++) {
+            $(`#q${i}`).val("");
+        }
+    });
+</script>
 </html>
