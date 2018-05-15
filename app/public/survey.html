@@ -140,13 +140,13 @@
     </form>
     <hr>
     <footer class="footer">
-        <p><a href="/api/friends">API Friends List</a> | <a href="#">GitHub Repo</a></p>
+        <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/Danielthweatt/friendFinder">GitHub Repo</a></p>
     </footer>
     <div class="modal fade" id="friendModal">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">You're Friend!</h4>
+                    <h4 class="modal-title">Your Friend!</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body"></div>
@@ -179,7 +179,7 @@
                 scores: scores
             };
             $.post("/api/friends", me, function(match){
-                $(".modal-body").append(`<h3>The best match to be your friend is: ${match.name}</h3>`);
+                $(".modal-body").append(`<h3>Closest Match: ${match.name}</h3>`);
                 $(".modal-body").append(`<img src="${match.photo}" alt="${match.name}" class="img-fluid img-thumbnail">`);
                 $("#friendModal").modal();
             });    

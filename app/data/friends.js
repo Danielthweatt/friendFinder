@@ -2,19 +2,19 @@
 
 friends = [
     {
-        "name":"Ahmed",
-        "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+        "name":"Ned",
+        "photo":"https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/2/27/SMH_Trailer_61.png/revision/latest?cb=20161211184412",
         "scores":[
-            5,
+            3,
             1,
-            4,
-            4,
-            5,
-            1,
+            3,
             2,
+            3,
+            2,
+            1,
             5,
             4,
-            1
+            4
         ]
     }  
 ];
