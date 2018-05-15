@@ -22,7 +22,7 @@
             <input type="text" class="form-control" id="name">
         </div>
         <div class="form-group">
-            <label for="photo-link">Link to Photo Image (Required)</label>
+            <label for="photo-link">Link to Your Photo (Required)</label>
             <input type="text" class="form-control" id="photo-link">
         </div>
         <hr>
@@ -149,9 +149,7 @@
                     <h4 class="modal-title">You're Friend!</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <div class="modal-body">
-                    <h3>The best match to be your friend is: <span id="friend"></span></h3>
-                </div>
+                <div class="modal-body"></div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
@@ -168,24 +166,31 @@
 <script type="text/javascript">
     $(".submit").on("click", function(event){
         event.preventDefault();
-        const scores = [];
-        for (let i = 1; i < 11; i++) {
-            scores.push($(`#q${i}`).val());
-        }
-        const me = {
-            name: $("#name").val().trim(),
-            photo: $("#photo-link").val().trim(),
-            scores: scores
-        };
-        $.post("/api/friends", me, function(match){
-            $("#friend").text(match.name);
-            $(".modal-body").append(`<img src="${match.photo}" alt="${match.name}" class="img-fluid img-thumbnail">`);
-            $("#friendModal").modal();
-        });    
-        $("#name").val("");
-        $("#photo-link").val("");
-        for (let i = 1; i < 11; i++) {
-            $(`#q${i}`).val(1);
+        const name = $("#name").val().trim();
+        const photo = $("#photo-link").val().trim();
+        if ((name !== "") && (photo !== "")) {
+            const scores = [];
+            for (let i = 1; i < 11; i++) {
+                scores.push($(`#q${i}`).val());
+            }
+            const me = {
+                name: name,
+                photo: photo,
+                scores: scores
+            };
+            $.post("/api/friends", me, function(match){
+                $(".modal-body").append(`<h3>The best match to be your friend is: ${match.name}</h3>`);
+                $(".modal-body").append(`<img src="${match.photo}" alt="${match.name}" class="img-fluid img-thumbnail">`);
+                $("#friendModal").modal();
+            });    
+            $("#name").val("");
+            $("#photo-link").val("");
+            for (let i = 1; i < 11; i++) {
+                $(`#q${i}`).val(1);
+            }
+            $(".modal-body").empty();
+        } else {
+            alert("Please make sure you have entered your name and a link to your photo.");
         }
     });
 </script>

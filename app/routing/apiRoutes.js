@@ -36,7 +36,7 @@ module.exports = function(app){
             differenceBetweenScores: 41
         };
         potentialFriends.forEach(function(potentialFriend){
-            if (match.score > potentialFriend.score) {
+            if (match.differenceBetweenScores > potentialFriend.differenceBetweenScores) {
                 match.name = potentialFriend.name;
                 match.photo = potentialFriend.photo;
                 match.differenceBetweenScores = potentialFriend.differenceBetweenScores;
