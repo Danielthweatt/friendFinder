@@ -26,20 +26,20 @@ module.exports = function(app){
             potentialFriends.push({
                 name: potentialFriend.name, 
                 photo: potentialFriend.photo, 
-                score: Math.abs(potentialFriendsTotalScore - myTotalScore)
+                differenceBetweenScores: Math.abs(potentialFriendsTotalScore - myTotalScore)
             });
         });
         friends.push(req.body);
         let match = {
             name: "",
             photo: "",
-            score: 41
+            differenceBetweenScores: 41
         };
         potentialFriends.forEach(function(potentialFriend){
             if (match.score > potentialFriend.score) {
                 match.name = potentialFriend.name;
                 match.photo = potentialFriend.photo;
-                match.score = potentialFriend.score;
+                match.differenceBetweenScores = potentialFriend.differenceBetweenScores;
             }
         });
         res.send(match);
