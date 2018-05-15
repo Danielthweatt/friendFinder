@@ -23,19 +23,25 @@ module.exports = function(app){
             potentialFriendsTotalScore = potentialFriend.scores.reduce(function(total, score){
                 return total + score;
             });
-            potentialFriends.push([potentialFriend.name, potentialFriend.photo, 
-            Math.abs(potentialFriendsTotalScore - myTotalScore)]);
+            potentialFriends.push({
+                name: potentialFriend.name, 
+                photo: potentialFriend.photo, 
+                score: Math.abs(potentialFriendsTotalScore - myTotalScore)
+            });
         });
         friends.push(req.body);
-        let match = ["", "", 41];
+        let match = {
+            name: "",
+            photo: "",
+            score: 41
+        };
         potentialFriends.forEach(function(potentialFriend){
-            if (match[2] > potentialFriend[2]) {
-                match[0] = potentialFriend[0];
-                match[1] = potentialFriend[1];
-                match[2] = potentialFriend[2];
+            if (match.score > potentialFriend.score) {
+                match.name = potentialFriend.name;
+                match.photo = potentialFriend.photo;
+                match.score = potentialFriend.score;
             }
         });
         res.send(match);
     });
-
 };
