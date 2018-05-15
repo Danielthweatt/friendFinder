@@ -2,7 +2,7 @@
 This is my first app utilizing express.js. 
 ##How to Use 
 Fill out the form on the survey page and the 
-app will find the person in the its "database" 
+app will find the person in its "database" 
 who is the best match to be your friend! The 
 app calculates your match by culmulating total 
 scores (from the answers to the questions 
